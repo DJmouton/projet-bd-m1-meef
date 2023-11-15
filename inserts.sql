@@ -63,3 +63,8 @@ create table LOCATIONS (
 );
 
 commit ;
+
+insert into FILM values (1, 'Salut les copines', 'Valérie Damidot', 'Valérie Damidot', 0, 'Drame', 10, true)
+insert into FILM values (2, 'Disparition au Habbo Hotel', 'Michel Houellebecq', 'Sean Connery', 0, 'Polar', 13, true)
+insert into FILM values (3, 'Renaissance Park', 'Quentin Tarantino', 'Léna Situations', 0, 'Film historique', 0, true)
+
