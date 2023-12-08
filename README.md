@@ -28,4 +28,4 @@ ABONNE(#id_client, nom, prenom, date_naissance, adresse, montant, gele)
 LOCATION(#id_client, #id_film, support, date)
 
 ### Schéma UML:
-![Schéma UML]()
+![Schéma UML](SchemaUML.png)
