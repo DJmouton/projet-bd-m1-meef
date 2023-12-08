@@ -6,7 +6,6 @@ DECLARE
 BEGIN
     SELECT Count(*) in nb_blueray
     FROM Support
-    GROUP BY id_film
     WHERE support = "blueray"
     IF (nb_blueray > 100) THEN
         RAISE_APPLICATION_ERROR("Plus de 100 Bluerays dans la machine");
@@ -41,7 +40,7 @@ ON Locations FOR EACH ROW
 DECLARE
     nb_locations NUMBER
 BEGIN
-    SELECT count(*) IN nb_locations
+    SELECT Count(*) IN nb_locations
     FROM Locations JOIN Abonne USING (id_client)
     GROUP BY id_client
     WHERE support = NULL
@@ -56,7 +55,7 @@ ON Locations FOR EACH ROW
 DECLARE
     nb_locations NUMBER
 BEGIN
-    SELECT count(*) IN nb_locations
+    SELECT Count(*) IN nb_locations
     FROM Locations
     EXCLUDE
         SELECT id_client
