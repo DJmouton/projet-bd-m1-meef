@@ -1,32 +1,31 @@
 # projet-bd-m1-meef
 
-¡Hola todos el mundo!
+### Contraintes:
+- somme(Bluray a True)  + somme(bluray en location) <= 100
+-->	au total dans la table support pas plus de 100 blueray 
+- montant >= 15 à la création de carte ou lorsque on ajoute argent
+- minimum crédité = 10 quand créditer()
+- location total avec abonnement <= 3
+- location total sans abonnement <= 1
+-	si montant < 0 alors carte gelée
+-	si montant > 15 alors carte dégelée
 
-Schéma temporaire (si vous voulez modifier c'est du mermaid)
-```mermaid
-classDiagram
-Client -- Abonnement
-Client -- Réservation
-Film -- Réservation
-Film -- Stock
+### Pour information :
+-	Dans la table location : quand le film est rendu le support passa à NULL
 
-Client : int id_client*
-Client : int nom
-Client : date naissance
-Client : int donnée_bancaire
-Abonnement : int id_abonnement*
-Abonnement : int id_client*
-Film : int id_film*
-Film : String nom
-Film : String auteur
-Film : String type
-Réservation : int id_reservation*
-Réservation : int id_client
-Réservation : int id_film
-Réservation : int id_transaction
-Stock : int id_film*
-Stock : int quantité
+### Schéma Relationnel :
 
-Réservation : réserver_abonnement()
-Réservation : réserver_bancaire()
-```
+FILM(id_film, titre, realisateur, acteur_principal, popularite, genre, age, qr_code) 
+
+SUPPORT(id_support, type_supp, #id_film)
+
+PRIX_LOCATION(abonnement, prix)
+
+CLIENT(id_client, cb)
+
+ABONNE(#id_client, nom, prenom, date_naissance, adresse, montant, gele)
+
+LOCATION(#id_client, #id_film, support, date)
+
+### Schéma UML:
+![Schéma UML]()
