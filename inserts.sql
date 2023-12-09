@@ -13,7 +13,7 @@ create table FILM (
     popularite number ,
     genre varchar2 ,
     age number ,
-    qr-code boolean ,
+    qr_code boolean ,
     constraint FILM_C1 primary key (id_film)
 );
 
@@ -21,8 +21,8 @@ create table SUPPORT (
     id_support number ,
     type_supp varchar2 ,
     id_film number ,
-    constraint SUPPORT_C1 primary key (id_support),
     constraint SUPPORT_C2 foreign key (id_film) references FILM(id_film)
+    constraint SUPPORT_C1 primary key (id_support),
     constraint SUPPORT_C check (type_supp in ('blu-ray', 'qr-code'))
 
 );
@@ -48,8 +48,8 @@ create table ABONNE (
     adresse varchar2 ,
     montant number ,
     gele boolean ,
-    constraint ABONNE_C1 primary key (id_client),
     constraint ABONNE_C2 foreign key (id_client) references CLIENT(id_client)
+    constraint ABONNE_C1 primary key (id_client),
 );
 
 create table LOCATIONS (
@@ -57,11 +57,10 @@ create table LOCATIONS (
     id_film number ,
     support varchar2 ,
     date_location date ,
-    constraint LOCATIONS_C1 primary key (id_client),
-    constraint LOCATIONS_C2 primary key (id_film),
-    constraint LOCATIONS_C3 foreign key (id_client) references CLIENT(id_client) ,
-    constraint LOCATIONS_C4 foreign key (id_film) references FILM(id_film) ,
-    constraint LOCATIONS_C5 check (support in ('qr-code','blu-ray'))
+    constraint LOCATIONS_C1 foreign key (id_client) references CLIENT(id_client) ,
+    constraint LOCATIONS_C2 foreign key (id_film) references FILM(id_film) ,
+    constraint LOCATIONS_C3 primary key (id_client, id_film),
+    constraint LOCATIONS_C4 check (support in ('qr-code','blu-ray'))
 );
 
 commit ;
