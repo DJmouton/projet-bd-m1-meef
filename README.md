@@ -17,7 +17,7 @@
 
 FILM(id_film, titre, realisateur, acteur_principal, popularite, genre, age, qr_code) 
 
-SUPPORT(id_support, type_supp, #id_film)
+SUPPORT(id_support, bluray, #id_film)
 
 PRIX_LOCATION(abonnement, prix)
 
