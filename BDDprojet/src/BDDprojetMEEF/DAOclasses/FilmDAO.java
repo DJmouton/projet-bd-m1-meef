@@ -122,32 +122,25 @@ public class FilmDAO extends DAO<Film> {
 		}
 		return films;
 	}
-	public List<Film> readAllDisponible(Boolean dispo) {
-		List<Film> films = new ArrayList<Film>();
+	
+	
+	public Boolean readQrCode(int id_film) {
+		Boolean bool = false;
+		
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-
 		
 		try {
-			String sql = "SELECT * FROM FILM WHERE disponible=";
+			String sql = "SELECT film.qr_code FROM film WHERE id_film = ? ";
 			ps = conn.prepareStatement(sql);
-			ps.setBoolean(1, dispo);
+			ps.setInt(1, id_film);
 			rs = ps.executeQuery();
 			
-			while (rs.next()) {
-				Film film = new Film(0, null, null, null, null, null, 0, false);
-				film.id_film = rs.getInt("id_film");
-				film.titre = rs.getString("titre");
-				film.realisateur = rs.getString("realisateur");
-				film.acteur_principal = rs.getString("acteur_principal");
-				film.popularite = rs.getInt("popularite");
-				film.genre = rs.getString("genre");
-				film.categorie = rs.getString("categorie");
-				film.qrcode = rs.getBoolean("qr_code");
-				
-				System.out.println(film.toString());
-				films.add(film);
-			}			
+			bool = rs.getBoolean("qr_code");
+			
+			System.out.println(bool);
+
+			
 		} catch (SQLException e) {
 			System.out.println(e.toString());
 		} finally {
@@ -159,10 +152,8 @@ public class FilmDAO extends DAO<Film> {
 				System.out.println(e.toString());
 			}
 		}
-		return films;
+		return bool;
 	}
-	
-
 	
 	
 	public void update(Film obj) {

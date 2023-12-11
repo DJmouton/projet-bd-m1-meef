@@ -9,7 +9,7 @@ import java.util.List;
 
 import BDDprojetMEEF.DAOclasses.classes.Client;
 
-public abstract class ClientDAO extends DAO<Client> {
+public class ClientDAO extends DAO<Client> {
 
 	public ClientDAO() {
 		super();

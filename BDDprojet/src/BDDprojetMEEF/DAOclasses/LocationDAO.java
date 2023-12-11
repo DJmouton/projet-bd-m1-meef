@@ -21,7 +21,7 @@ public class LocationDAO extends DAO<Location> {
 		PreparedStatement ps = null;
 		
 		try {
-			String sql = "INSERT INTO location(id_client, id_film, support, date_location) VALUES(?, ?, ?, ?)";
+			String sql = "INSERT INTO locations(id_client, id_film, support, date_location) VALUES(?, ?, ?, ?)";
 			ps = this.conn.prepareStatement(sql);
 			ps.setInt(1, location.id_client);
 			ps.setInt(2, location.id_film);
@@ -49,7 +49,7 @@ public class LocationDAO extends DAO<Location> {
 		
 		
 		try {
-			String sql = "SELECT * FROM location WHERE id_client = ? ";
+			String sql = "SELECT * FROM locations WHERE id_client = ? ";
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, id_client);
 			rs = ps.executeQuery();
@@ -91,7 +91,7 @@ public class LocationDAO extends DAO<Location> {
 		
 		
 		try {
-			String sql = "SELECT * FROM location WHERE id_film = ? ";
+			String sql = "SELECT * FROM locations WHERE id_film = ? ";
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, id_film);
 			rs = ps.executeQuery();
@@ -133,7 +133,7 @@ public class LocationDAO extends DAO<Location> {
 		Location location = new Location(null, null, id_film, id_client);
 		
 		try {
-			String sql = "SELECT * FROM location WHERE id_client = ? and id_film = ?";
+			String sql = "SELECT * FROM locations WHERE id_client = ? and id_film = ?";
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, id_client);
 			ps.setInt(2, id_film);
@@ -172,7 +172,7 @@ public class LocationDAO extends DAO<Location> {
 		PreparedStatement ps = null;
 		
 		try {
-			String sql = "UPDATE location set support = ?, date_location = ? WHERE  id_client = ? and id_film = ? ";
+			String sql = "UPDATE locations set support = ?, date_location = ? WHERE  id_client = ? and id_film = ? ";
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, location.support);
 			ps.setDate(2, (Date) location.dateLocation);
@@ -196,7 +196,7 @@ public class LocationDAO extends DAO<Location> {
 		
 		try {
 			for (Location location : locations) {
-				String sql = "UPDATE location set support = ?, date_location = ? WHERE  id_client = ? and id_film = ? ";
+				String sql = "UPDATE locations set support = ?, date_location = ? WHERE  id_client = ? and id_film = ? ";
 				ps = conn.prepareStatement(sql);
 				ps.setString(1, location.support);
 				ps.setDate(2, (Date) location.dateLocation);
@@ -223,7 +223,7 @@ public class LocationDAO extends DAO<Location> {
 		PreparedStatement ps = null;
 		
 		try {
-			String sql = "DELETE FROM location WHERE  id_client = ? and id_film = ? and date_location = ?";
+			String sql = "DELETE FROM locations WHERE  id_client = ? and id_film = ? and date_location = ?";
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, location.id_client);
 			ps.setInt(2, location.id_film);
